@@ -1,0 +1,35 @@
+html,
+body,
+#root,
+.App {
+  height: 100%;
+  font-family: 'Helvetica Neue', sans-serif;
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.App {
+  font-family: 'Helvetica Neue', sans-serif;
+  text-align: center;
+}
+
+.react-flow__node-custom {
+  padding: 10px;
+  background-color: #556677;
+  color: white;
+}
+
+.css-1t1j96h-MuiPaper-root-MuiDialog-paper {
+  border-radius: 1rem !important;
+}
+
+.sc-EHOje.jvzENE.rsc-os{
+  padding-left: 2.7rem !important;
+}
+
+.ipSaXD {
+  background: #e0a16a !important;
+  font-size: 12px !important;
+  padding: 5px 10px !important;
+}
