@@ -36,7 +36,7 @@ const InputNodeSetting: FunctionComponent<Props> = ({
   return (
     <div>
       <div className="text-sm font-bold text-gray-500 text-start">Message</div>
-      <div className="w-full py-3">
+      <div className="w-full py-2">
         <TextareaAutosize
           onChange={(e) => {
             const updateValue = e.target.value;

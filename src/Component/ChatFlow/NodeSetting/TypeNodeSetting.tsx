@@ -43,9 +43,9 @@ const TypeNodeSetting: React.FunctionComponent<Props> = ({
   const options = ["Start", "Keyword", "Reply"];
 
   return (
-    <div>
+    <div className="mb-3">
       <div className="text-sm font-bold text-gray-500 text-start">Type</div>
-      <div className="w-full py-3">
+      <div className="w-full py-2">
         <Autocomplete
           onChange={handleChange}
           disablePortal

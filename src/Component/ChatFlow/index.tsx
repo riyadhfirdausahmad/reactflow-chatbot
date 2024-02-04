@@ -65,7 +65,7 @@ const BasicFlow = () => {
             </span>
           </div> */}
           <div className="text-sm font-bold text-gray-500 text-start mb-2 grid grid-cols-3">
-            <span className="col-span-1">Message ID</span>
+            <span className="col-span-1">Block ID</span>
             <span className="text-sm text-gray-500 text-start col-span-2 font-normal">
               : {selectedNode ? selectedNode.id : "Empty"}
             </span>
