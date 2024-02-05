@@ -27,7 +27,7 @@ const AlertDialog: React.FunctionComponent<Props> = ({ nodes, edges }) => {
         onClick={handleClickOpen}
       />
       <Dialog open={open} onClose={handleClose}>
-        <ChatsBot nodes={nodes} edges={edges} />
+        <ChatsBot edges={edges} />
       </Dialog>
     </React.Fragment>
   );
