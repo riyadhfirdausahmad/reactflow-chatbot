@@ -19,7 +19,7 @@ const CopyToClipboardButton: React.FC<CopyToClipboardButtonProps> = ({
 
   return (
     <CopyToClipboard text={text} onCopy={handleCopy}>
-      <div className="px-2 cursor-default">
+      <div className="px-1 cursor-default">
         <CopyAll className="h-3 w-3 text-blue-600" />
       </div>
     </CopyToClipboard>

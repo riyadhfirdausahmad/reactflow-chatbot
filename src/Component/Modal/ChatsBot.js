@@ -1,23 +1,28 @@
 import { ThemeProvider } from "styled-components";
 import ChatBot from "react-simple-chatbot";
 
-const ChatsBot = () => {
-  const dataFromLocalStorage = localStorage.getItem("example-flow");
-  const response = dataFromLocalStorage
-    ? JSON.parse(dataFromLocalStorage)
-    : null;
-  const datas = response.nodes;
-
-  if (!datas || datas.length === 0) {
-    return null;
-  }
-
-  const steps = datas.flatMap((node, index) => {
+const ChatsBot = ({ nodes, edges }) => {
+  const steps = nodes?.flatMap((node, index) => {
     const dataLabel = node.data.label
       .split("\n")
       .map((paragraph, index) => <p key={index}>{paragraph}</p>);
 
-    if (index === datas.length - 1) {
+    if (index === nodes.length - 1 && nodes.length === 2) {
+      return [
+        {
+          id: node.id,
+          user: true,
+          end: true,
+          validator: (value) => {
+            if (value === node.data.label) {
+              return true;
+            } else {
+              return "Keyword yang anda masukan salah";
+            }
+          },
+        },
+      ];
+    } else if (index === nodes.length - 1 && nodes.length > 2) {
       return [
         {
           id: node.id,
@@ -32,7 +37,7 @@ const ChatsBot = () => {
           id: node.id,
           component: <div>{dataLabel}</div>,
           asMessage: true,
-          trigger: datas[index + 1].id,
+          trigger: nodes[index + 1].id,
         },
       ];
     } else {
@@ -41,7 +46,7 @@ const ChatsBot = () => {
           {
             id: node.id,
             user: true,
-            trigger: datas[index + 1].id,
+            trigger: nodes[index + 1].id,
             validator: (value) => {
               if (value === node.data.label) {
                 return true;
@@ -59,12 +64,12 @@ const ChatsBot = () => {
               {
                 value: "Nasi Padang",
                 label: "Nasi Padang",
-                trigger: datas[index + 1].id,
+                trigger: nodes[index + 1].id,
               },
               {
                 value: "Soto",
                 label: "Soto",
-                trigger: datas[index + 1].id,
+                trigger: nodes[index + 1].id,
               },
             ],
           },

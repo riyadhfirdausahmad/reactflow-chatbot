@@ -2,8 +2,14 @@ import * as React from "react";
 import Dialog from "@mui/material/Dialog";
 import { PlayArrowRounded } from "@mui/icons-material";
 import ChatsBot from "./ChatsBot";
+import { Edge, Node } from "reactflow";
 
-export default function AlertDialog() {
+interface Props {
+  nodes?: Node<any, string | undefined>[] | undefined;
+  edges?: Edge<any>[] | undefined;
+}
+
+const AlertDialog: React.FunctionComponent<Props> = ({ nodes, edges }) => {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -21,8 +27,10 @@ export default function AlertDialog() {
         onClick={handleClickOpen}
       />
       <Dialog open={open} onClose={handleClose}>
-        <ChatsBot />
+        <ChatsBot nodes={nodes} edges={edges} />
       </Dialog>
     </React.Fragment>
   );
-}
+};
+
+export default AlertDialog;

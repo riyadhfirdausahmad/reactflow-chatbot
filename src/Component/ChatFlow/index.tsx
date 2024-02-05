@@ -5,8 +5,12 @@ import Navbar from "Component/Common/Navbar";
 import NodePanel from "../ChatFlow/NodePanel";
 import NodeSetting from "Component/ChatFlow/NodeSetting";
 import { nodeTypes } from "Component/ChatFlow/constant";
+import { useCallback, useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 
 const BasicFlow = () => {
+  // const [datas, setDatas] = useState([]);
+
   const {
     reactFlowWrapper,
     setReactFlowInstance,
@@ -24,9 +28,22 @@ const BasicFlow = () => {
     handleEdgeValidation,
     saveFlow,
   } = useChatFlow();
+
+  // useEffect(() => {
+  // const dataFromLocalStorage = localStorage.getItem("example-flow");
+  // const response = dataFromLocalStorage
+  //   ? JSON.parse(dataFromLocalStorage)
+  //   : null;
+  // const nodes = response?.nodes;
+  // }, []);
+
+  // console.log(edges, "On Connect");
+
   return (
     <div className="h-full">
       <Navbar
+        nodes={nodes}
+        edges={edges}
         onSave={() => {
           saveFlow();
         }}

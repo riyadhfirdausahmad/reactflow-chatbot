@@ -10,9 +10,26 @@ const TextMessageNode = ({ data, isConnectable, id }: NodeProps) => {
   const dataLabel = data?.label
     .split("\n")
     .map((paragraph: any, index: number) => <p key={index}>{paragraph}</p>);
+
+  const color =
+    data?.type === "Start"
+      ? "bg-sky-500/80"
+      : data?.type === "Keyword"
+      ? "bg-orange-400/80"
+      : "bg-lime-600/80";
+
+  const footerColor =
+    data?.type === "Start"
+      ? "bg-sky-500/30"
+      : data?.type === "Keyword"
+      ? "bg-orange-400/30"
+      : "bg-lime-600/30";
+
   return (
-    <div className="w-[200px]">
-      <div className="py-2 px-3 flex justify-start text-white bg-lime-600/80 text-[10px] items-center gap-1 font-bold rounded-t-md">
+    <div className="w-[200px] bg-">
+      <div
+        className={`py-2 px-3 flex justify-start text-white text-[10px] items-center gap-1 font-bold rounded-t-md ${color}`}
+      >
         <WhatsAppIcon className="w-4 h-4" />
         <div>{data?.type}</div>
       </div>
@@ -33,7 +50,9 @@ const TextMessageNode = ({ data, isConnectable, id }: NodeProps) => {
         </div>
         <Handle type="source" position={Position.Bottom} />
       </div>
-      <div className="text-left py-2 px-3 flex justify-between text-white bg-blue-100 text-[10px] items-center gap-1 font-bold rounded-b-md">
+      <div
+        className={`text-left py-2 px-3 flex justify-between text-white text-[10px] items-center gap-1 font-bold rounded-b-md ${footerColor}`}
+      >
         <div id="messageID" className="italic line-clamp-1 text-blue-600">
           {id}
         </div>
